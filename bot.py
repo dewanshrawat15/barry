@@ -25,7 +25,10 @@ def search(param):
 	searchResults = browser.find_elements_by_class_name('r')
 	links = []
 	for i in searchResults:
-		tempLinkElem = i.find_element_by_tag_name('a')
+		try:
+			tempLinkElem = i.find_element_by_tag_name('a')
+		except:
+			continue
 		tempLink = tempLinkElem.get_attribute("href")
 		links.append(tempLink)
 	windows(links)
